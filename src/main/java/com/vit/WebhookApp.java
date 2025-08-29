@@ -23,7 +23,7 @@ public class WebhookApp implements CommandLineRunner {
     @Override
     public void run(String... args) {
         try {
-            // Step 1: Generate webhook and token
+            
             String generateUrl = "https://bfhldevapigw.healthrx.co.in/hiring/generateWebhook/JAVA";
             
             Map<String, String> generateRequest = new HashMap<>();
@@ -54,8 +54,7 @@ public class WebhookApp implements CommandLineRunner {
             System.out.println("Webhook URL: " + webhookUrl);
             System.out.println("Access Token: " + accessToken.substring(0, 50) + "...");
             
-            // Step 2: Prepare the SQL query
-            // Since regNo "22BLC1244" ends with 44 (even), using Question 2 solution
+            
             String finalQuery = 
                 "SELECT e1.EMP_ID, e1.FIRST_NAME, e1.LAST_NAME, d.DEPARTMENT_NAME, " +
                 "COUNT(e2.EMP_ID) AS YOUNGER_EMPLOYEES_COUNT " +
@@ -65,7 +64,7 @@ public class WebhookApp implements CommandLineRunner {
                 "GROUP BY e1.EMP_ID, e1.FIRST_NAME, e1.LAST_NAME, d.DEPARTMENT_NAME " +
                 "ORDER BY e1.EMP_ID DESC";
             
-            // Step 3: Submit the solution
+            /
             HttpHeaders submitHeaders = new HttpHeaders();
             submitHeaders.setContentType(MediaType.APPLICATION_JSON);
             submitHeaders.set("Authorization", accessToken); // Use the full token as received
